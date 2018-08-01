@@ -19,6 +19,7 @@ class Album extends Component {
 
     this.audioElement = document.createElement('audio');
     this.audioElement.src = album.songs[0].audioSrc;
+    this.list = album.songs;
   }
 
   play() {
@@ -61,7 +62,6 @@ class Album extends Component {
         return <span className='ion-md-play'></span>;
       }
       else if (this.state.isPlaying === true && isSameSong) {
-        console.log('needs pause');
         return <span className='ion-md-pause'></span>;
       }
       else if(this.state.isPlaying === false && isSameSong) {
@@ -78,6 +78,17 @@ class Album extends Component {
      const newSong = this.state.album.songs[newIndex];
      this.setSong(newSong);
      this.play();
+
+   }
+
+   handleNextClick() {
+     const currentIndex = this.state.album.songs.findIndex(song => this.state.currentSong === song);
+     const list = this.list.length - 1;
+     const newIndex = Math.min(list, currentIndex + 1);
+     const newSong = this.state.album.songs[newIndex];
+     this.setSong(newSong);
+     this.play();
+
    }
 
   render() {
@@ -114,6 +125,7 @@ class Album extends Component {
           currentSong={this.state.currentSong}
           handleSongClick={() => this.handleSongClick(this.state.currentSong)}
           handlePrevClick={() => this.handlePrevClick()}
+          handleNextClick={() => this.handleNextClick()}
           />
       </section>
     );
