@@ -11,8 +11,9 @@ class Album extends Component {
 
     this.state = {
       album: album,
-      currentSong: album.songs[0],
-      isPlaying: false
+      currentSong: album.songs[undefined],
+      isPlaying: false,
+      isHovered: false
     };
 
     this.audioElement = document.createElement('audio');
@@ -36,16 +37,39 @@ class Album extends Component {
 
   handleSongClick(song) {
     const isSameSong = this.state.currentSong === song;
-    if(this.state.isPlaying && isSameSong === true) {
-      console.log('pause');
+    if(this.state.isPlaying && isSameSong) {
       this.pause();
     }
     else {
       if (!isSameSong) { this.setSong(song); }
-      console.log('play');
       this.play();
     }
   }
+
+  hovered(index) {
+    this.setState({isHovered: index});
+  }
+
+  notHovered(index) {
+    this.setState({ isHovered: false});
+  }
+
+  buttonHovered(song, index) {
+    const isSameSong = this.state.currentSong === song;
+      if(this.state.isHovered === index) {
+        return <span className='ion-md-play'></span>;
+      }
+      else if (this.state.isPlaying === true && isSameSong) {
+        console.log('needs pause');
+        return <span className='ion-md-pause'></span>;
+      }
+      else if(this.state.isPlaying === false && isSameSong) {
+        return <span className='ion-md-play'></span>
+      }
+      else {
+        return <span>{index + 1}</span>;
+      }
+   }
 
   render() {
     return (
@@ -67,8 +91,8 @@ class Album extends Component {
           <tbody>
           {
             this.state.album.songs.map((song, index) =>
-                <tr key={index} className='song' onClick={() => this.handleSongClick(song)}>
-                  <td>{index + 1}</td>
+                <tr key={index} className='song' onClick={() => this.handleSongClick(song)} onMouseEnter={() => this.hovered(index)} onMouseLeave={() => this.notHovered(index)}>
+                  <td>{this.buttonHovered(song, index)}</td>
                   <td>{song.title}</td>
                   <td>{song.duration} secs</td>
                 </tr>
