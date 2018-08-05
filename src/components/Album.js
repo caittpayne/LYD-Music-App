@@ -12,8 +12,9 @@ class Album extends Component {
 
     this.state = {
       album: album,
-      currentSong: album.songs[undefined],
+      currentSong: album.songs[0],
       currentTime: 0,
+      currentVolume: 0,
       duration: album.songs[0].duration,
       isPlaying: false,
       isHovered: false
@@ -28,19 +29,26 @@ class Album extends Component {
     this.eventListeners = {
       timeupdate: e => {
         this.setState({ currentTime: this.audioElement.currentTime });
+        document.getElementById('time-bar').value = this.audioElement.currentTime / this.audioElement.duration;
       },
       durationchange: e => {
         this.setState({ duration: this.audioElement.duration });
+      },
+      volumechange: e => {
+        this.setState({ currentVolume: this.audioElement.volume });
       }
     };
     this.audioElement.addEventListener('timeupdate', this.eventListeners.timeupdate);
     this.audioElement.addEventListener('durationchange', this.eventListeners.durationchange);
+    this.audioElement.addEventListener('volumechange', this.eventListeners.volumechange);
   }
 
   conponentWillUnmount() {
     this.audioElement.src = null;
+    this.audioElement = null;
     this.audioElement.removeEventListener('timeupdate', this.eventListeners.timeupdate);
     this.audioElement.removeEventListener('durationchange', this.eventListeners.durationchange);
+    this.audioElement.removeEventListener('volumechange', this.eventListeners.volumechange);
   }
 
   play() {
@@ -63,6 +71,7 @@ class Album extends Component {
     if(this.state.isPlaying && isSameSong) {
       this.pause();
     }
+
     else {
       if (!isSameSong) { this.setSong(song); }
       this.play();
@@ -85,7 +94,7 @@ class Album extends Component {
       else if (this.state.isPlaying === true && isSameSong) {
         return <span className='ion-md-pause'></span>;
       }
-      else if(this.state.isPlaying === false && isSameSong) {
+      else if(this.state.isPlaying === false && isSameSong && this.state.currentTime > 0) {
         return <span className='ion-md-play'></span>
       }
       else {
@@ -117,6 +126,25 @@ class Album extends Component {
      this.setState({ currentTime: newTime });
    }
 
+   handleVolumeChange(e) {
+     const newVolume = e.target.value;
+     this.audioElement.volume = newVolume;
+     this.setState({ currentVolume: newVolume });
+   }
+
+
+   formatTime(time) {
+      const min = Math.floor(time / 60);
+      const sec = Math.floor(time % 60).toString().padStart(2, 0);;
+
+      if(typeof time === 'number') {
+        return '-:--';
+      }
+      else {
+        return `${min}:${sec}`;
+      }
+    }
+
   render() {
     return (
       <section className='album'>
@@ -140,7 +168,7 @@ class Album extends Component {
                 <tr key={index} className='song' onClick={() => this.handleSongClick(song)} onMouseEnter={() => this.hovered(index)} onMouseLeave={() => this.notHovered(index)}>
                   <td>{this.buttonHovered(song, index)}</td>
                   <td>{song.title}</td>
-                  <td>{song.duration} secs</td>
+                  <td>{this.formatTime(song.duration)}</td>
                 </tr>
             )
           }
@@ -149,12 +177,14 @@ class Album extends Component {
         <PlayerBar
           isPlaying={this.state.isPlaying}
           currentSong={this.state.currentSong}
-          currentTime={this.audioElement.currentTime}
-          duration={this.audioElement.duration}
+          currentTime={this.formatTime(this.audioElement.currentTime)}
+          duration={this.formatTime(this.audioElement.duration)}
+          currentVolume={this.audioElement.volume}
           handleSongClick={() => this.handleSongClick(this.state.currentSong)}
           handlePrevClick={() => this.handlePrevClick()}
           handleNextClick={() => this.handleNextClick()}
           handleTimeChange={(e) => this.handleTimeChange(e)}
+          handleVolumeChange={(e) => this.handleVolumeChange(e)}
           />
       </section>
     );
