@@ -135,10 +135,14 @@ class Album extends Component {
 
    formatTime(time) {
       const min = Math.floor(time / 60);
-      const sec = Math.floor(time % 60).toString().padStart(2, 0);;
+      const sec = Math.floor(time % 60).toString().padStart(2, 0);
 
-      if(typeof time === 'number') {
-        return '-:--';
+      if(typeof time !== 'number') {
+        const int = parseFloat(time);
+        const stringMin = Math.floor(int / 60);
+        const stringSec = Math.floor(int % 60).toString().padStart(2, 0);
+
+        return `${stringMin}:${stringSec}`
       }
       else {
         return `${min}:${sec}`;
