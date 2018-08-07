@@ -6,7 +6,7 @@ import './App.css';
 import Landing from './components/landing/Landing';
 import Library from './components/Library';
 import Album from './components/Album';
-import Slider from './components/slider/slider';
+import Slider from './components/landing/slider/slider';
 
 class App extends Component {
   render() {
@@ -20,7 +20,7 @@ class App extends Component {
           <h1>Bloc Jams</h1>
         </header>
         <main>
-          <Route exact path='/' component={Landing} />
+          <Route exact path='/' component={Slider} />
           <Route path='/library' component={Library} />
           <Route path='/album/:slug' component={Album} />
         </main>

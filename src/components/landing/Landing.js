@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './main.css';
 
-const Landing = () => (
+/* const Landing = () => (
   <section className='landing'>
     <h1 className='hero-title'>Turn the music up!</h1>
     <section className='selling-points'>
@@ -19,6 +19,28 @@ const Landing = () => (
       </div>
     </section>
   </section>
-);
+); */
 
+const Landing = [
+  {
+    title: 'Turn the music up!',
+    description: '',
+    buttons: ''
+  },
+  {
+    title: 'Choose your music',
+    description: 'The world is full of music; why should you have to listen to music someone else chose?',
+    buttons: ''
+  },
+  {
+    title: 'Unlimited, streaming, ad-free',
+    description: 'No arbitrary limits. No distractions.',
+    buttons: ''
+  },
+  {
+    title: 'Mobile enabled',
+    description: 'Listen to your music on the go. This streaming service is available on all mobile platforms.',
+    buttons: ''
+  }
+]
 export default Landing;
