@@ -1,9 +1,17 @@
-.slider {
-  position: relative;
-}
+@import url('https://fonts.googleapis.com/css?family=Anton|Open+Sans');
 
 h1 {
-  color: purple;
+  color: #67E596;
+  font-family: 'Anton', sans-serif;
+  font-size: 2em;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+p {
+  font-family: 'Open Sans', 'Sans-Serif';
+  color: #707070;
+  font-size: 102%;
 }
 
 .slide {
@@ -14,4 +22,77 @@ h1 {
 
 .active {
   display: block;
+}
+
+.slider {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  width: 700px;
+}
+
+.slider-item {
+  align-self: center;
+  margin: 20px;
+}
+
+.noButton {
+  display: none;
+}
+
+.button {
+    border-radius: 30px;
+    border: none;
+    background-color:  #FF00A5;
+    color: #FFFFFF;
+    font-family:'Open Sans', 'Sans-Serif';
+    font-weight: bold;
+    font-size: 105%;
+    text-transform: uppercase;
+    padding: 6px 40px 6px 40px;
+}
+
+.secondButton {
+  border-radius: 30px;
+  border-color: #FF00A5;
+  background-color: Transparent;
+  border-style: solid;
+  color: #FF00A5;
+  font-family:'Open Sans', 'Sans-Serif';
+  font-weight: bold;
+  font-size: 105%;
+  text-transform: uppercase;
+  padding: 5px 40px 5px 40px;
+  margin:  0px 0px 0px 10px;
+}
+
+button:hover {
+  text-decoration: none;
+  background-color: #FD39B8;
+}
+
+button:focus {
+  outline: 0;
+}
+
+.secondButton:hover {
+  text-decoration: none;
+  background-color: Transparent;
+  border-color: #FD39B8 ;
+  color: #FD39B8 ;
+}
+
+.slider-text {
+  width: 800px;
+}
+
+.mainSlide {
+  font-size: 3em;
+  letter-spacing: 3px;
+  font-family: 'Anton', sans-serif;
+}
+
+.fa {
+  color: #707070;
 }

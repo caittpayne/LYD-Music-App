@@ -4,7 +4,7 @@ class LeftArrow extends Component {
   render() {
     return(
       <div className='backArrow' onClick={this.props.goToPrevSlide}>
-        <i className='fa fa-arrow-left fa-2x' aria-hidden='true'></i>
+        <i className='fa fa-angle-left fa-3x' aria-hidden='true'></i>
       </div>
     )
   }

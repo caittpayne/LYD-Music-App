@@ -9,16 +9,20 @@ import Slider from './components/landing/slider/slider';
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header>
-          <nav>
-            <Link to='/'>Home</Link>
-            <Link to='/library'>Library</Link>
+      <div className='app'>
+        <header className='head'>
+          <div className='logo-area'>
+            <Link to='/'><img src='/assets/images/logo.png' alt='LYD logo' id='logo'/></Link>
+          </div>
+          <nav className='nav'>
+            <Link to='/' className='nav-item'>Home</Link>
+            <Link to='/library' className='nav-item'>Library</Link>
           </nav>
-          <h1>Bloc Jams</h1>
         </header>
-        <main>
-          <Route exact path='/' component={Slider} />
+        <main className='main'>
+          <div className='slider'>
+            <Route exact path='/' component={Slider} />
+          </div>
           <Route path='/library' component={Library} />
           <Route path='/album/:slug' component={Album} />
         </main>
