@@ -1,5 +1,4 @@
-import React from 'react';
-import styles from './main.css';
+
 
 /* const Landing = () => (
   <section className='landing'>
@@ -21,11 +20,10 @@ import styles from './main.css';
   </section>
 ); */
 
-const Landing = [
-  {
+export default [{
     title: 'Turn the music up!',
     description: '',
-    buttons: ''
+    buttons: 'Listen Now'
   },
   {
     title: 'Choose your music',
@@ -42,5 +40,4 @@ const Landing = [
     description: 'Listen to your music on the go. This streaming service is available on all mobile platforms.',
     buttons: ''
   }
-]
-export default Landing;
+];

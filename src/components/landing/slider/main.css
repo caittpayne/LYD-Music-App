@@ -1,0 +1,17 @@
+.slider {
+  position: relative;
+}
+
+h1 {
+  color: purple;
+}
+
+.slide {
+  display: none;
+  max-width: 900px;
+  text-align: center;
+}
+
+.active {
+  display: block;
+}

@@ -1,7 +1,29 @@
-import React from 'react';
+import React, { Component } from 'react';
+import landingData from '../Landing';
+import './main.css';
 
-const Slide = ({point}) => {
-  return <div className='slide'>{point}</div>
+class Slide extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {landing: landingData};
+  }
+
+  render() {
+    return(
+      <section>
+      {
+        this.state.landing.map((s, index) =>
+          <div className={
+            index === this.props.activeIndex ? 'active' : 'slide'}
+            key={index}>
+              <h1>{s.title}</h1>
+              <p>{s.description}</p>
+              <button>{s.buttons}</button>
+          </div>
+        ) }
+        </section>
+    )
+  }
 }
 
 export default Slide;
