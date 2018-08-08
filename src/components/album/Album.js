@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import albumData from './../data/albums';
+import albumData from './../../data/albums';
 import PlayerBar from './PlayerBar';
+import './main.css';
+import 'font-awesome/css/font-awesome.min.css';
 
 class Album extends Component {
   constructor(props) {
@@ -149,30 +151,46 @@ class Album extends Component {
       }
     }
 
+    background() {
+      const backgroundImage = {
+        background: `url(${this.state.album.albumCover}) no-repeat`,
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        backgroundSize: 'cover'
+      };
+
+      return backgroundImage;
+    }
+
   render() {
     return (
-      <section className='album'>
-        <section id='album-info'>
-          <img id='album-cover-art' src={this.state.album.albumCover} alt={this.state.album.title}/>
+      <div className='album'>
+        <div className='cover-art' style={this.background()} >
           <div className='album-details'>
             <h1 id='album-title'>{this.state.album.title}</h1>
-            <h2 className='artist'>{this.state.album.artist}</h2>
-            <div id='release-info'>{this.state.album.releaseInfo}</div>
-          </div>
-        </section>
+            <h3 className='artist'>{this.state.album.artist}, {this.state.album.releaseInfo}</h3>
+            </div>
+        </div>
         <table id='song-list'>
-          <colgroup>
-            <col id='song-number-column' />
-            <col id='song-title-column' />
-            <col id='song-duration-column' />
-          </colgroup>
+        <colgroup>
+          <col id='song-number-column' />
+          <col id='song-title-column' />
+          <col id='song-duration-column' />
+        </colgroup>
+          <thead>
+            <tr>
+              <th className='number-title'>Name</th>
+              <th className='number-title'>Track</th>
+              <th className='time'><i className='fa fa-clock-o' aria-hidden='true'></i></th>
+            </tr>
+          </thead>
           <tbody>
           {
             this.state.album.songs.map((song, index) =>
                 <tr key={index} className='song' onClick={() => this.handleSongClick(song)} onMouseEnter={() => this.hovered(index)} onMouseLeave={() => this.notHovered(index)}>
-                  <td>{this.buttonHovered(song, index)}</td>
-                  <td>{song.title}</td>
-                  <td>{this.formatTime(song.duration)}</td>
+                  <td className='number-title'>{this.buttonHovered(song, index)}</td>
+                  <td className='number-title'>{song.title}</td>
+                  <td className='time'>{this.formatTime(song.duration)}</td>
                 </tr>
             )
           }
@@ -190,7 +208,7 @@ class Album extends Component {
           handleTimeChange={(e) => this.handleTimeChange(e)}
           handleVolumeChange={(e) => this.handleVolumeChange(e)}
           />
-      </section>
+      </div>
     );
   }
 }

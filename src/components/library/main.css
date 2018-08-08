@@ -1,0 +1,18 @@
+
+.lib {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+
+.albums {
+  align-self: center;
+}
+
+
+
+
+.cover {
+  width: 100px;
+}

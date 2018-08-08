@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Anton|Open+Sans');
 
-h1 {
-  color: #67E596;
+.heading {
+  color: #67E596 !important;
   font-family: 'Anton', sans-serif;
   font-size: 2em;
   letter-spacing: 3px;
@@ -26,15 +26,19 @@ p {
 
 .slider {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   align-content: center;
+  align-items: center;
   text-align: center;
-  width: 700px;
+  width: 100%;
+  padding: 100px 0px 0px 0px;
 }
 
-.slider-item {
-  align-self: center;
-  margin: 20px;
+.slider-items {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
 }
 
 .noButton {
@@ -44,7 +48,7 @@ p {
 .button {
     border-radius: 30px;
     border: none;
-    background-color:  #FF00A5;
+    background: linear-gradient(to left top, #F81FA4, #FD46D8);
     color: #FFFFFF;
     font-family:'Open Sans', 'Sans-Serif';
     font-weight: bold;

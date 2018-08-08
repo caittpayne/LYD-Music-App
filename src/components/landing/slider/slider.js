@@ -51,18 +51,16 @@ export default class Slider extends Component {
   render() {
     return (
       <div className='slider'>
-        <div className='slider-item'>
+        <div className='slider-items'>
           <LeftArrow
             goToPrevSlide={() => this.goToPrevSlide()}
           />
-        </div>
-        <div className='slider-item slider-text'>
+        <div className='slider-text'>
           <Slide
             activeIndex={this.state.activeIndex}
             goToNextSlide={() => this.goToNextSlide()}
           />
         </div>
-        <div className='slider-item'>
           <RightArrow
             goToNextSlide={() => this.goToNextSlide()}
           />

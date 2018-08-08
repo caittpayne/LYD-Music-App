@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
 import landingData from '../Landing';
-import Library from '../../Library';
+import Library from '../../library/Library';
 import './main.css';
 
 class Slide extends Component {
@@ -18,9 +18,9 @@ class Slide extends Component {
           <div className={
             index === this.props.activeIndex ? 'active' : 'slide'}
             key={index}>
-              <h1 className={index === 0 ? 'mainSlide' : 'slider-item'}>{s.title}</h1>
+              <h1 className={index === 0 ? 'mainSlide heading' : 'slider-item heading'}>{s.title}</h1>
               <p>{s.description}</p>
-              <Link to='../../Library'><button className='button'>{s.buttons}</button></Link>
+              <Link to='../../library/Library'><button className='button'>{s.buttons}</button></Link>
               <button className={index === 0 ? 'secondButton' : 'noButton'} onClick={this.props.goToNextSlide}>{s.buttons2}</button>
           </div>
         ) }

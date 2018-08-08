@@ -2,8 +2,8 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
 import './App.css'
-import Library from './components/Library';
-import Album from './components/Album';
+import Library from './components/library/Library';
+import Album from './components/album/Album';
 import Slider from './components/landing/slider/slider';
 
 class App extends Component {
@@ -19,12 +19,10 @@ class App extends Component {
             <Link to='/library' className='nav-item'>Library</Link>
           </nav>
         </header>
-        <main className='main'>
-          <div className='slider'>
-            <Route exact path='/' component={Slider} />
-          </div>
-          <Route path='/library' component={Library} />
+        <main>
+          <Route exact path='/' component={Slider} />
           <Route path='/album/:slug' component={Album} />
+          <Route path='/library' component={Library} />
         </main>
       </div>
     );

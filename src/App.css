@@ -13,12 +13,16 @@ html {
   flex-direction: row;
   justify-content: space-between;
   align-content: space-between;
-  padding: 10px;
+  padding: 2px 10px 2px 10px;
+  background-color: white;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
 }
 
 .nav {
   align-self: right;
-  padding: 30px 0px 0px 0px;
+  padding: 20px 0px 0px 0px;
 }
 
 .nav-item {
@@ -36,12 +40,4 @@ a:hover {
 #logo {
   width: 100px;
   height: auto;
-}
-
-.main {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  align-items: center;
-  margin: 100px 0px 0px 0px;
 }
