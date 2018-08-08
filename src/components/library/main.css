@@ -1,18 +1,53 @@
-
-.lib {
+.library {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  background-color: white;
+  height: 100vh;
+}
+
+.head-section {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-content: center;
+  align-items: center;
+  font-family: 'Open Sans', 'Sans-Serif';
+  text-transform: uppercase;
+  color: #707070;
 }
 
 .albums {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
   align-self: center;
+  flex-wrap: wrap;
+  margin: 30px 0px 0px 0px;
 }
 
-
-
-
 .cover {
-  width: 100px;
+  width: 300px;
+  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.album-item {
+  margin: 0px 60px 0px 60px;
+  font-family: 'Open Sans', 'Sans-Serif';
+  text-decoration: none;
+}
+
+#title {
+  color: #FF01A5;
+  margin: 15px 0px 0px 0px;
+}
+
+#artist {
+  color: #707070;
+  margin: 5px 0px 0px 0px;
+}
+
+#song {
+  margin: 5px 0px 0px 0px;
 }
