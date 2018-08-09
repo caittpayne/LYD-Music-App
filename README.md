@@ -4,9 +4,6 @@ LYD (renamed from Bloc Jams) is a simple music application, featuring two albums
 It was the first React project in Bloc's curriculum and gave me a great introduction to working
 with a Javascript framework.
 
-***
-<center>[Appearance](#appearance) | [Built With](#built-with) | [Motivation](#motivation) | [Posts](#posts)</center>
-***
 
 ## Appearance <a id="appearance"></a>
 
