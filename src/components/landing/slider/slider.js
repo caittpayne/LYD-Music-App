@@ -11,7 +11,7 @@ export default class Slider extends Component {
 
     this.state = {
       activeIndex: 0,
-      slides: Slide,
+      
       length: landingData.length
     };
   }
